@@ -1,0 +1,11 @@
+## Title: Weapon Swap Automacros
+## Interface: 90100
+## Notes: Keeps Weapon Swap macros updated
+## Author: Lord Katerchen
+## Version: 0.1
+## X-License: None
+## X-Credits: None
+## X-Curse-Project-ID: None
+## X-WoWI-ID: None
+
+weapon-swap-automacros.lua
