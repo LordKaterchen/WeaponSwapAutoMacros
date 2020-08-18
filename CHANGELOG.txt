@@ -1,2 +1,4 @@
 0.01-alpha:
 	Testing the packaging
+0.02-alpha:
+	Testing Autopackaging again
