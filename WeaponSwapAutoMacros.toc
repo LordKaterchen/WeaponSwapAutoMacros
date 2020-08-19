@@ -8,6 +8,7 @@
 ## X-Curse-Project-ID: None
 ## X-WoWI-ID: None
 ## OptionalDeps: myAddOns
-## SavedVariables: weapon-swap-automacros
-weapon-swap-automacros.lua
-weapon-swap-automacros-config.xml
+## SavedVariablesPerCharacter: WeaponSwapAutoMacros
+
+WeaponSwapAutoMacrosMain.lua
+WeaponSwapAutoMacrosConfig.xml
