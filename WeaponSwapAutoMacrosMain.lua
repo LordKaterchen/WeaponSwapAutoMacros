@@ -232,11 +232,14 @@ end
 
 -- Make sure that a newly chosen macro name does not collide with any existing one
 local function ValidMacroName(name, given_macro_key)
+  if string.len(name) > 16 then
+      return ("Your chosen macro name '%s' is too long. Macros are limited to 16 characters each."):format(name)
+  end
   for class_id, specs in ipairs(WeaponSwapAutoMacros["config"]) do
     for spec_id, spec_config in ipairs(specs) do
       for macro_key, macro_table in pairs(spec_config["Macros"]) do
         if macro_table["MacroName"] == name and macro_key ~= given_macro_key then
-          return ("Your chosen macro name %s collides with the macro name for %s. Every macro name must be fully unique."):format(name, macro_key)
+          return ("Your chosen macro name '%s' collides with the macro name for %s. Every macro name must be fully unique."):format(name, macro_key)
         end
       end
     end
@@ -264,7 +267,7 @@ local function CreateOptions()
     type = "execute",
     order = 1,
     name = "Restore Default Values",
-    desc = "Reset all macro monfigurations to the default values. Try this at least once if the addon throws any errors or you misconfigured it.",
+    desc = "Reset all macro configurations to the default values. Try this at least once if the addon throws any errors or you misconfigured it.",
     func = function()
       RestoreDefaults()
     end,
