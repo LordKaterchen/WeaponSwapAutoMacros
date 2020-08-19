@@ -1,5 +1,5 @@
 ## Title: Weapon Swap Automacros
-## Interface: 90100
+## Interface: 90001
 ## Notes: Keeps Weapon Swap macros updated
 ## Author: Lord Katerchen
 ## Version: 0.1
@@ -7,5 +7,7 @@
 ## X-Credits: None
 ## X-Curse-Project-ID: None
 ## X-WoWI-ID: None
-
+## OptionalDeps: myAddOns
+## SavedVariables: weapon-swap-automacros
 weapon-swap-automacros.lua
+weapon-swap-automacros-config.xml
