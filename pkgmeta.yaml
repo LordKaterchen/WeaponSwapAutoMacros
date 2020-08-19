@@ -1,6 +1,10 @@
-.package-as: Weapon Swap Automacros
+.package-as: Weapon Swap Auto Macros
 enable-nolib-creation: no
 
 manual-changelog: CHANGELOG.txt
+
+tools-used:
+    - ace3
+    - libstub
 
 license-output: LICENSE.txt

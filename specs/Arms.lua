@@ -1,4 +1,3 @@
-print("LOADING ARMS")
 local ARMS = {}
 
 ARMS["Name"] = "Arms"
@@ -32,7 +31,78 @@ ARMS["Macros"]["Mortal Strike"] = {
 /cast Mortal Strike
 /equipslot 16 %s
 ]],
+  Order = 1,
   Formats = {"Set1Main"}
+}
+
+ARMS["Macros"]["Cleave"] = {
+  Active=true,
+  MacroName="CL WSAM ARMS",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip 
+/cast [talent:5/3] Cleave; Sweeping Strikes
+/equipslot [talent:5/3] 16 %s
+]],
+  Order = 2,
+  Formats = {"Set1Main"}
+}
+
+ARMS["Macros"]["Shield Block"] = {
+  Active=true,
+  MacroName="SB WSAM ARMS",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Shield Block
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 3,
+  Formats = {"Set2Main", "Set2Off"}
+}
+
+ARMS["Macros"]["Shield Slam"] = {
+  Active=true,
+  MacroName="SS WSAM ARMS",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Shield Slam
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 4,
+  Formats = {"Set2Main", "Set2Off"}
+}
+
+
+ARMS["Macros"]["Defensive Stance"] = {
+  Active=true,
+  MacroName="DS WSAM ARMS",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Defensive Stance
+/equipslot 16 %s
+/equipslot 17 %s
+/equipslot 16 %s
+]],
+  Order = 5,
+  Formats = {"Set2Main", "Set2Off", "Set1Main"}
+}
+
+ARMS["Macros"]["Weapon Swap"] = {
+  Active=true,
+  MacroName="WS WSAM ARMS",
+  IconId = 975736,
+  Body = [[
+/equipslot 16 %s
+/equipslot 17 %s
+/equipslot 16 %s
+]],
+  Order = 6,
+  Formats = {"Set2Main", "Set2Off", "Set1Main"}
 }
 
 if not _G["WSAM_DEFAULTS"] then

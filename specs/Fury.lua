@@ -1,4 +1,3 @@
-print("LOADING FURY")
 local FURY = {}
 
 FURY["Name"] = "Fury"
@@ -33,8 +32,94 @@ FURY["Macros"]["Rampage"] = {
 /equipslot 16 %s
 /equipslot 17 %s
 ]],
+  Order = 1,
   Formats = {"Set1Main", "Set1Off"}
 }
+
+FURY["Macros"]["Raging Blow"] = {
+  Active=true,
+  MacroName="RB WSAM FURY",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Raging Blow
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 2,
+  Formats = {"Set1Main", "Set1Off"}
+}
+
+FURY["Macros"]["Onslaught"] = {
+  Active=true,
+  MacroName="OS WSAM FURY",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Onslaught
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 3,
+  Formats = {"Set1Main", "Set1Off"}
+}
+
+FURY["Macros"]["Siegebreaker"] = {
+  Active=true,
+  MacroName="SIEGE WSAM FURY",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Siegebreaker
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 4,
+  Formats = {"Set1Main", "Set1Off"}
+}
+
+FURY["Macros"]["Shield Block"] = {
+  Active=true,
+  MacroName="SB WSAM FURY",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Shield Block
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 5,
+  Formats = {"Set2Main", "Set2Off"}
+}
+
+FURY["Macros"]["Shield Slam"] = {
+  Active=true,
+  MacroName="SS WSAM FURY",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Shield Slam
+/equipslot 16 %s
+/equipslot 17 %s
+]],
+  Order = 6,
+  Formats = {"Set2Main", "Set2Off"}
+}
+
+
+FURY["Macros"]["Weapon Swap"] = {
+  Active=true,
+  MacroName="WS WSAM FURY",
+  IconId = 975736,
+  Body = [[
+/equipslot 16 %s
+/equipslot 17 %s
+/equipslot 16 %s
+]],
+  Order = 7,
+  Formats = {"Set2Main", "Set2Off", "Set1Main"}
+}
+
 
 if not _G["WSAM_DEFAULTS"] then
   _G["WSAM_DEFAULTS"] = {}

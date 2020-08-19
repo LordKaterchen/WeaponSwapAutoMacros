@@ -1,8 +1,2 @@
-0.01-alpha:
-	Testing the packaging
-0.02-alpha:
-	Testing Autopackaging again
-0.03-alpha:
-	Testing Autopackaging again
-0.04-alpha:
-	Testing Autopackaging again	
+1.0-release:
+	Release in time for the prepatch. Full initial functionality. Works eith 8.3 and 9.0
