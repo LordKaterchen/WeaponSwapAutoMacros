@@ -255,7 +255,7 @@ local function CreateOptions()
   -- main option frame contianing two buttons
   local options = {
       type = "group",
-      name = "WeaponSwapAutoMacros",
+      name = "Weapon Swap Auto Macros",
       desc = "All changes are immediately persisted. Please recreate all macros after changing any of the options.",
       descStyle = "inline",
       inline = true,

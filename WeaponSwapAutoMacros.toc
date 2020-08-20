@@ -1,6 +1,6 @@
-## Title: Weapon Swap Automacros
+## Title: Weapon Swap Auto Macros
 ## Interface: 90001
-## Notes: Keeps Weapon Swap macros updated
+## Notes: Keeps weapon swap macros updated when your equipment sets change
 ## Author: Lord Katerchen
 ## Email: lord dot katerchen at gmail dot com
 ## Version: 0.1
