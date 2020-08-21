@@ -1,2 +1,6 @@
-1.0-release:
+1.02-release:
+	- Fixed an error where trying to recreate the macros actually also restored the defaults
+	- Fixed an error where restoring the defaults would render the options unusable until a UI reload
+
+1.01-release:
 	Release in time for the prepatch. Full initial functionality. Works eith 8.3 and 9.0

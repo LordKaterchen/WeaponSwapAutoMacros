@@ -226,8 +226,7 @@ local function RestoreDefaults()
     WeaponSwapAutoMacros["config"] = {}
   end
   
-  WeaponSwapAutoMacros["config"] = _G["WSAM_DEFAULTS"] 
-  Recreate()
+  WeaponSwapAutoMacros["config"] = DCtableMerge(WeaponSwapAutoMacros["config"], _G["WSAM_DEFAULTS"]) 
 end
 
 -- Make sure that a newly chosen macro name does not collide with any existing one
@@ -280,7 +279,7 @@ local function CreateOptions()
     name = "Recreate Macros (current spec)",
     desc = "Create or update all macros based on the current configuration for your current spec. Recreation is also triggered on changing specs or updating equipment sets.",
     func = function()
-      RestoreDefaults()
+      Recreate()
     end,
     width = 1.5,
   }
