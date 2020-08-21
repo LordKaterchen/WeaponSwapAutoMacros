@@ -1,4 +1,4 @@
-1.03-release:
+1.04-release:
 	- Fixed an error where trying to recreate the macros actually also restored the defaults
 	- Fixed an error where restoring the defaults would render the options unusable until a UI reload
 

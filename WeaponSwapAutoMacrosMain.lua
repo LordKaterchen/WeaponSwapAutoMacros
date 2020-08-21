@@ -226,7 +226,7 @@ local function RestoreDefaults()
     WeaponSwapAutoMacros["config"] = {}
   end
   
-  WeaponSwapAutoMacros["config"] = DCtableMerge(WeaponSwapAutoMacros["config"], _G["WSAM_DEFAULTS"]) 
+  WeaponSwapAutoMacros["config"] = DCtableMerge(WeaponSwapAutoMacros["config"], _G["WSAM_DEFAULTS"])
 end
 
 -- Make sure that a newly chosen macro name does not collide with any existing one
