@@ -3,10 +3,10 @@
 ## Notes: Keeps weapon swap macros updated when your equipment sets change
 ## Author: Lord Katerchen
 ## Email: lord dot katerchen at gmail dot com
-## Version: 0.1
+## Version: 1.05
 ## X-License: None
 ## X-Credits: None
-## X-Curse-Project-ID: None
+## X-Curse-Project-ID: 403057
 ## X-WoWI-ID: None
 ## OptionalDeps: myAddOns
 ## SavedVariablesPerCharacter: WeaponSwapAutoMacros
@@ -16,7 +16,6 @@
 ## X-LoadOn-Always: delayed
 ## X-Category: Warrior
 ## X-Website: https://github.com/lordkaterchen/WeaponSwapAutoMacros
-## X-Curse-Project-ID: 0
 
 libs\LibStub\LibStub.lua
 libs\AceGUI-3.0\AceGUI-3.0.xml

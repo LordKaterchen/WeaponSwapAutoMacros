@@ -350,7 +350,7 @@ local function CreateOptions()
         -- make the last line prettier for odd options
         local width = 1.0
         if offset == macro_table["Order"] and (offset % 2) ~= 0 then
-          width = 2.0
+          width = 2.2
         end
         
         

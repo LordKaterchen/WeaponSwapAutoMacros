@@ -105,6 +105,20 @@ ARMS["Macros"]["Weapon Swap"] = {
   Formats = {"Set2Main", "Set2Off", "Set1Main"}
 }
 
+ARMS["Macros"]["Sharpen Blade MS"] = {
+  Active=true,
+  MacroName="SBMS WSAM ARMS",
+  IconId = "INV_Misc_QuestionMark",
+  Body = [[
+#showtooltip
+/cast Sharpen Blade
+/cast Mortal Strike
+/equipslot 16 %s
+]],
+  Order = 7,
+  Formats = {"Set1Main"}
+}
+
 if not _G["WSAM_DEFAULTS"] then
   _G["WSAM_DEFAULTS"] = {}
 end
