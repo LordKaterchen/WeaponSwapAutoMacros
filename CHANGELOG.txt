@@ -1,3 +1,8 @@
+1.06-release:
+	- Softened the requirements for fury weapons to allow two handed or one handed weapons
+	- Improved integrating updates of the macro patterns into existing configurations
+	- Implemented Macros for Paladins to give Holy a twohanded option and retribution Paladins a shield option
+
 1.05-release:
 	- Added Sharpen Blade + Mortal Strike in a single macro to the Arms Mmacro options
 

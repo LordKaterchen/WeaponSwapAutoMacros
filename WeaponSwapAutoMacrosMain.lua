@@ -96,7 +96,7 @@ local function Recreate()
           local main1id = (C_EquipmentSet.GetItemIDs(set1id))[16]
           if main1id then
             local main1name, _, _, _, _, _, main1subtype, _, main1type = GetItemInfo(main1id)
-            if main1type == set1main_type then
+            if (main1type == set1main_type) or (set1main_type == "LK_WEAPON" and (main1type == "INVTYPE_WEAPON" or main1type == "INVTYPE_2HWEAPON" or main1type == "INVTYPE_WEAPONMAINHAND")) or (set1main_type == "LK_ONEHAND" and (main1type == "INVTYPE_WEAPON" or main1type == "INVTYPE_WEAPONMAINHAND")) then
               item_names["Set1Main"] = main1name
               --print(("|cff22dd22WeaponSwapAutoMacros: '%s' main hand identified as '%s'"):format(set1name, main1name))
             else
@@ -123,7 +123,7 @@ local function Recreate()
           local off1id = (C_EquipmentSet.GetItemIDs(set1id))[17]
           if off1id then
             local off1name, _, _, _, _, _, off1subtype, _, off1type = GetItemInfo(off1id)
-            if off1type == set1off_type then
+            if (off1type == set1off_type) or (set1off_type == "LK_WEAPON" and (off1type == "INVTYPE_WEAPON" or off1type == "INVTYPE_2HWEAPON" or off1type == "INVTYPE_WEAPONoffHAND")) or (set1off_type == "LK_ONEHAND" and (off1type == "INVTYPE_WEAPON" or off1type == "INVTYPE_WEAPONoffHAND")) then
               item_names["Set1Off"] = off1name
               --print(("|cff22dd22WeaponSwapAutoMacros: '%s' off hand identified as '%s'"):format(set1name, off1name))
             else
@@ -150,7 +150,7 @@ local function Recreate()
           local main2id = (C_EquipmentSet.GetItemIDs(set2id))[16]
           if main2id then
             local main2name, _, _, _, _, _, main2subtype, _, main2type = GetItemInfo(main2id)
-            if main2type == set2main_type then
+            if (main2type == set2main_type) or (set2main_type == "LK_WEAPON" and (main2type == "INVTYPE_WEAPON" or main2type == "INVTYPE_2HWEAPON" or main2type == "INVTYPE_WEAPONMAINHAND")) or (set2main_type == "LK_ONEHAND" and (main2type == "INVTYPE_WEAPON" or main2type == "INVTYPE_WEAPONMAINHAND")) then
               item_names["Set2Main"] = main2name
               --print(("|cff22dd22WeaponSwapAutoMacros: '%s' main hand identified as '%s'"):format(set2name, main2name))
             else
@@ -178,7 +178,7 @@ local function Recreate()
           local off2id = (C_EquipmentSet.GetItemIDs(set2id))[17]
           if off2id then
             local off2name, _, _, _, _, _, off2subtype, _, off2type = GetItemInfo(off2id)
-            if off2type == set2off_type then
+            if (off2type == set2off_type) or (set2off_type == "LK_WEAPON" and (off2type == "INVTYPE_WEAPON" or off2type == "INVTYPE_2HWEAPON" or off2type == "INVTYPE_WEAPONoffHAND")) or (set2off_type == "LK_ONEHAND" and (off2type == "INVTYPE_WEAPON" or off2type == "INVTYPE_WEAPONoffHAND")) then
               item_names["Set2Off"] = off2name
               --print(("|cff22dd22WeaponSwapAutoMacros: '%s' off hand identified as '%s'"):format(set2name, off2name))
             else
@@ -234,8 +234,8 @@ local function ValidMacroName(name, given_macro_key)
   if string.len(name) > 16 then
       return ("Your chosen macro name '%s' is too long. Macros are limited to 16 characters each."):format(name)
   end
-  for class_id, specs in ipairs(WeaponSwapAutoMacros["config"]) do
-    for spec_id, spec_config in ipairs(specs) do
+  for class_id, specs in pairs(WeaponSwapAutoMacros["config"]) do
+    for spec_id, spec_config in pairs(specs) do
       for macro_key, macro_table in pairs(spec_config["Macros"]) do
         if macro_table["MacroName"] == name and macro_key ~= given_macro_key then
           return ("Your chosen macro name '%s' collides with the macro name for %s. Every macro name must be fully unique."):format(name, macro_key)
@@ -287,8 +287,8 @@ local function CreateOptions()
   local panelorder = 1
 
   -- Create sub frames for each spec
-  for class_id, specs in ipairs(WeaponSwapAutoMacros["config"]) do
-    for spec_id, spec_config in ipairs(specs) do
+  for class_id, specs in pairs(WeaponSwapAutoMacros["config"]) do
+    for spec_id, spec_config in pairs(specs) do
       panelorder = panelorder + 1
       options.args[spec_config.Name] = {}
       local current_options = options.args[spec_config.Name]
@@ -391,6 +391,7 @@ frame:HookScript('OnEvent', function(self, event, arg1, ...)
   -- Will fill in all missing pieces with default values if necessary
   if event == 'ADDON_LOADED' and arg1 == "WeaponSwapAutoMacros" then
     -- Load Defaults into Saved Settings for all missing entries
+
     if not WeaponSwapAutoMacros then
       WeaponSwapAutoMacros = {}
     end
@@ -399,6 +400,34 @@ frame:HookScript('OnEvent', function(self, event, arg1, ...)
     end
    
     WeaponSwapAutoMacros["config"] = DCtableMerge(deepcopy(_G["WSAM_DEFAULTS"]), WeaponSwapAutoMacros["config"]) 
+
+    -- Overwrite non-configurable values with defaults so that updates get persisted into existing configs
+    for class_id, specs in pairs(WeaponSwapAutoMacros["config"]) do
+      for spec_id, spec_config in pairs(specs) do
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1Desc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1Desc"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1MainBool"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1MainBool"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1MainType"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1MainType"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1MainTypeDesc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1MainTypeDesc"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1OffBool"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1OffBool"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1OffType"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1OffType"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set1OffTypeDesc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set1OffTypeDesc"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2Desc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2Desc"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2MainBool"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2MainBool"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2MainType"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2MainType"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2MainTypeDesc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2MainTypeDesc"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2OffBool"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2OffBool"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2OffType"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2OffType"] 
+        WeaponSwapAutoMacros["config"][class_id][spec_id]["Set2OffTypeDesc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Set2OffTypeDesc"] 
+        for macro_key, macro_table in pairs(spec_config["Macros"]) do
+          WeaponSwapAutoMacros["config"][class_id][spec_id]["Macros"][macro_key]["IconId"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Macros"][macro_key]["IconId"] 
+          WeaponSwapAutoMacros["config"][class_id][spec_id]["Macros"][macro_key]["Body"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Macros"][macro_key]["Body"] 
+          WeaponSwapAutoMacros["config"][class_id][spec_id]["Macros"][macro_key]["Order"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Macros"][macro_key]["Order"] 
+          WeaponSwapAutoMacros["config"][class_id][spec_id]["Macros"][macro_key]["Formats"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Macros"][macro_key]["Formats"] 
+          WeaponSwapAutoMacros["config"][class_id][spec_id]["Macros"][macro_key]["Set2OffTypeDesc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Macros"][macro_key]["Set2OffTypeDesc"] 
+          WeaponSwapAutoMacros["config"][class_id][spec_id]["Macros"][macro_key]["Set2OffTypeDesc"] = _G["WSAM_DEFAULTS"][class_id][spec_id]["Macros"][macro_key]["Set2OffTypeDesc"]
+        end
+      end
+    end 
 
   -- Upon equipment set change or spec change, recreate all the macros
   elseif event == 'EQUIPMENT_SETS_CHANGED' or event == "PLAYER_SPECIALIZATION_CHANGED" then

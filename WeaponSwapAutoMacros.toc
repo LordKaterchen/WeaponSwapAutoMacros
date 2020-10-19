@@ -26,5 +26,7 @@ libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
 
 specs\Arms.lua
 specs\Fury.lua
+specs\Retribution.lua
+specs\Holy.lua
 
 WeaponSwapAutoMacrosMain.lua

@@ -2,20 +2,20 @@ local FURY = {}
 
 FURY["Name"] = "Fury"
 
-FURY["Set1Name"] = "Fury_Twohanders"
-FURY["Set1Desc"] = "Equipment set name for your Fury warrior with two twohanded weapons:"
+FURY["Set1Name"] = "Fury_Offense"
+FURY["Set1Desc"] = "Equipment set name for your Fury warrior with two weapons:"
 FURY["Set1MainBool"] = true
-FURY["Set1MainType"] = "INVTYPE_2HWEAPON"
-FURY["Set1MainTypeDesc"] = "twohanded weapon"
+FURY["Set1MainType"] = "LK_WEAPON"
+FURY["Set1MainTypeDesc"] = "weapon"
 FURY["Set1OffBool"] = true
-FURY["Set1OffType"] = "INVTYPE_2HWEAPON"
-FURY["Set1OffTypeDesc"] = "twohanded weapon"
+FURY["Set1OffType"] = "LK_WEAPON"
+FURY["Set1OffTypeDesc"] = "weapon"
 
 FURY["Set2Name"] = "Fury_Shield"
 FURY["Set2Desc"] = "Equipment set name for your Fury warrior with a shield:"
 FURY["Set2MainBool"] = true
-FURY["Set2MainType"] = "INVTYPE_2HWEAPON"
-FURY["Set2MainTypeDesc"] = "twohanded weapon"
+FURY["Set2MainType"] = "LK_WEAPON"
+FURY["Set2MainTypeDesc"] = "weapon"
 FURY["Set2OffBool"] = true
 FURY["Set2OffType"] = "INVTYPE_SHIELD"
 FURY["Set2OffTypeDesc"] = "shield"
